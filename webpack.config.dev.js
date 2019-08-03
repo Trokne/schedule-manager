@@ -2,15 +2,16 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: {
-    app: './src/index.js'
-  },
+  entry: ['react-hot-loader/patch', './src/index.js'],
   resolve: {
-    extensions: ['.jsx', '.js', 'css']
+    extensions: ['.jsx', '.js', 'css'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
   },
   devServer: {
     hotOnly: true,
-    contentBase: path.resolve(__dirname, 'public')
+    contentBase: path.resolve(__dirname, 'dist')
   },
   module: {
     rules: [
