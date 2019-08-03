@@ -11,7 +11,7 @@ module.exports = {
   },
   devServer: {
     hotOnly: true,
-    contentBase: path.resolve(__dirname, 'dist')
+    contentBase: path.resolve(__dirname, 'public')
   },
   module: {
     rules: [

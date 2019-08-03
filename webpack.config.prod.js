@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -10,7 +11,7 @@ module.exports = {
     }
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'public'),
     filename: '[name].[contenthash:8].js'
   },
   module: {
@@ -28,6 +29,15 @@ module.exports = {
         test: /\.(svg|png|jpg|woff2)$/,
         loader: 'file-loader'
       }
+    ]
+  },
+  optimization: {
+    minimizer: [
+      new TerserPlugin({
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        parallel: true
+      })
     ]
   },
   plugins: [
