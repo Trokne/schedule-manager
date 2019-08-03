@@ -5,7 +5,9 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>sss d s</h1>
+        <h1>
+          Привет! В дальнейшем данный текст будет заменён на нормальный сайт
+        </h1>
       </div>
     );
   }
