@@ -3,12 +3,9 @@ const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: ['react-hot-loader/patch', './src/index.js'],
+  entry: ['./src/index.js'],
   resolve: {
-    extensions: ['.jsx', '.js', 'css'],
-    alias: {
-      'react-dom': '@hot-loader/react-dom'
-    }
+    extensions: ['.jsx', '.js', 'css']
   },
   output: {
     path: path.resolve(__dirname, 'public'),
@@ -34,9 +31,13 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        parallel: true
+        parallel: true,
+        cahce: true,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
       })
     ]
   },
