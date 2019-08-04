@@ -31,7 +31,13 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        parallel: true
+        parallel: true,
+        cahce: true,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
       })
     ]
   },
