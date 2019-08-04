@@ -31,8 +31,6 @@ module.exports = {
   optimization: {
     minimizer: [
       new TerserPlugin({
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
         parallel: true
       })
     ]
