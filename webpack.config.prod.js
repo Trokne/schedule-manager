@@ -1,6 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
@@ -50,11 +49,6 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[hash:8].css',
       chunkFilename: '[id].[hash:8].css'
-    }),
-    new CleanWebpackPlugin([path.resolve(__dirname, 'public')], {
-      root: process.cwd(),
-      verbose: true,
-      dry: false
     })
   ]
 };
