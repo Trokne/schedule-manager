@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
 
@@ -32,7 +33,7 @@ module.exports = {
     minimizer: [
       new TerserPlugin({
         parallel: true,
-        cahce: true,
+        cache: true,
         terserOptions: {
           output: {
             comments: false
@@ -44,6 +45,10 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash:8].css',
+      chunkFilename: '[id].[hash:8].css'
     })
   ]
 };
