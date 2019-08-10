@@ -1,0 +1,12 @@
+stages:
+    - Build
+
+Dependencies:
+    image: node:lts
+    stage: Build
+    script: 
+        - yarn install
+    only:
+        - /^release-.*$/
+    except:
+        - branches
