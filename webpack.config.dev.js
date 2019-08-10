@@ -9,6 +9,7 @@ module.exports = {
       'react-dom': '@hot-loader/react-dom'
     }
   },
+  stats: 'errors-warnings',
   devServer: {
     hotOnly: true,
     contentBase: path.resolve(__dirname, 'public')
