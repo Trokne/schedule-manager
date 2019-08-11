@@ -21,10 +21,10 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader', 'postcss-loader']
       },
       {
-        test: /\.(svg|png|jpg|woff2)$/,
+        test: /\.(svg|png|jpg|woff2|woff)$/,
         loader: 'file-loader'
       }
     ]

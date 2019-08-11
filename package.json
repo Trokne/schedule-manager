@@ -68,6 +68,9 @@
     "husky": "^3.0.3",
     "lint-staged": "^9.2.1",
     "mini-css-extract-plugin": "^0.8.0",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "precss": "^4.0.0",
     "prettier": "^1.18.2",
     "react-hot-loader": "^4.12.10",
     "style-loader": "^0.23.1",
@@ -77,8 +80,11 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
+    "@material-ui/core": "^4.3.2",
+    "@material-ui/icons": "^4.2.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-hot-loader": "^4.12.10"
+    "react-hot-loader": "^4.12.10",
+    "typeface-roboto": "0.0.75"
   }
 }

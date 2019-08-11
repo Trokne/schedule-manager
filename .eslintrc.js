@@ -33,6 +33,7 @@ module.exports = {
     'no-param-reassign': 'off',
 
     /* Другое */
+    'comma-dangle': 'off',
     'no-plusplus': 'off',
     'max-len': ['error', 100, 2, { ignoreUrls: true }],
     'no-console': 'error',
