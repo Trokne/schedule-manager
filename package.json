@@ -9,12 +9,12 @@
     "start:prod": "npm run build && http-server ./public -p 8081 -o --cors",
     "lint": "eslint ./src --max-warnings 10",
     "lint:write": "eslint ./src --fix --max-warnings 10",
-    "check-branch": "git-branch-is master && lint-staged || true"
+    "lint-if-in-master": "git-branch-is -r \"^(?!.*master).*$\" || git-branch-is master && lint-staged"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run check-branch",
-      "pre-push": "npm run check-branch",
+      "pre-commit": "npm run lint-if-in-master",
+      "pre-push": "npm run lint-if-in-master",
       "pre-rebase": "lint-staged"
     }
   },
