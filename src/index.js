@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App';
 import 'typeface-roboto';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './configs/store';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <Router>
+      <Fragment>Test</Fragment>
+    </Router>
+  </Provider>,
+  document.getElementById('root')
+);
