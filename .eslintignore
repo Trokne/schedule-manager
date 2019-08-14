@@ -2,3 +2,12 @@
 /.vscode
 node_modules
 postcss.config.js
+/src/fonts
+*.svg
+*.png
+*.jpg
+*.bmp
+*.woff2
+*.woff
+*.eot
+*.ttf
