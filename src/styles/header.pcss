@@ -1,14 +1,26 @@
 @import 'colors.pcss';
+@import 'variables.pcss';
 
 .header-body {
-  background-color: $element-background;
-  border: 1px solid $element-border;
-  height: 65px;
+  background-color: $element-background-color;
+  border: 1px solid $element-border-color;
+  height: 60px;
   display: flex;
   align-items: center;
-}
+  justify-content: space-between;
 
-.site-name {
-  font-family: 'Roboto';
-  font-weight: bold;
+  .site-name {
+    padding-left: $default-padding;
+    font-family: 'Roboto';
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: $element-fontsize;
+  }
+
+  .login {
+    padding-right: $default-padding;
+    .login-button {
+      font-size: $element-fontsize;
+    }
+  }
 }

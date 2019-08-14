@@ -6,6 +6,7 @@ import store from './configs/store';
 import App from './components/app';
 import './styles/index.pcss';
 import './styles/fonts.pcss';
+import 'typeface-roboto';
 
 ReactDOM.render(
   <Provider store={store}>
