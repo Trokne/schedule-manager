@@ -22,12 +22,12 @@ module.exports = {
         loader: 'babel-loader'
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader', 'postcss-loader']
+        test: /\.p?css$/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'resolve-url-loader']
       },
       {
-        test: /\.(svg|png|jpg|woff2|woff)$/,
-        loader: 'file-loader'
+        test: /\.(svg|png|jpg|woff2|woff|eot|ttf)$/,
+        use: 'file-loader'
       }
     ]
   },
