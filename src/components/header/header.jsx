@@ -1,16 +1,12 @@
 import React, { Fragment } from 'react';
-import '../styles/header.pcss';
-import Button from '@material-ui/core/Button';
+import '../../styles/header.pcss';
+import HeadMenu from '../../containers/headermenu';
 
 const Header = () => (
   <Fragment>
     <div className="header-body">
       <div className="site-name">Менеджер расписаний</div>
-      <div className="login">
-        <Button variant="outlined" className="login-button" color="primary">
-          Войти
-        </Button>
-      </div>
+      <HeadMenu className="menu" />
     </div>
   </Fragment>
 );
