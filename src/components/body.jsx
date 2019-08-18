@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
-import '../styles/body.pcss';
+import { Route, Switch } from 'react-router-dom';
+import MainPage from './mainpage';
+import AuthPage from '../containers/auth/authpage';
 
 const Body = () => (
   <Fragment>
-    <div className="content">
-      <div className="title">Лучшее средство управления расписанием</div>
-      <div className="description">
-        Создавайте группы, отмечайте домашние задания, будьте в тренде!
-      </div>
-    </div>
+    <Switch>
+      <Route exact path="/" component={MainPage} />
+      <Route path="/auth" component={AuthPage} />
+    </Switch>
   </Fragment>
 );
 

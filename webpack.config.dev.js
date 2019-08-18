@@ -11,6 +11,7 @@ module.exports = {
   },
   stats: 'errors-warnings',
   devServer: {
+    historyApiFallback: true,
     hotOnly: true,
     contentBase: path.resolve(__dirname, 'public')
   },
