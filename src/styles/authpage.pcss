@@ -1,0 +1,61 @@
+@import 'colors.pcss';
+@import 'variables.pcss';
+
+.container {
+  width: 100%;
+  margin-top: $default-padding;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .box {
+    width: 400px;
+    background-color: $container-background-color;
+    border: 1px solid $element-border-color;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+
+    .content {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: stretch;
+      align-items: stretch;
+      padding-bottom: $form-margin;
+    }
+
+    .header {
+      height: 45px;
+      display: flex;
+      border-bottom: 1px solid $element-border-color;
+
+      .tab {
+        width: 50%;
+        background-color: $container-background-color;
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: $element-foreground-color;
+      }
+
+      .tab:first-child.selected {
+        border-right: 1px solid $element-border-color;
+      }
+
+      .tab:last-child.selected {
+        border-left: 1px solid $element-border-color;
+      }
+
+      .tab.selected {
+        background-color: $element-background-color;
+        border-bottom: 2px solid $element-border-color;
+      }
+    }
+  }
+}

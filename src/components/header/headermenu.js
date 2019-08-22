@@ -1,22 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@material-ui/core/Button';
-import '../../styles/headermenu.pcss';
+import { Button } from 'antd';
 import { Link } from 'react-router-dom';
+import '../../styles/headermenu.pcss';
 
 const HeaderMenu = props => {
   const { isLogin } = props;
   return (
     <div className="menu">
       {!isLogin ? (
-        <Button
-          variant="outlined"
-          className="login-button"
-          color="primary"
-          component={Link}
-          to="/auth"
-        >
-          Войти
+        <Button type="primary">
+          <Link to="/auth">Войти</Link>
         </Button>
       ) : (
         'Авторизация ещё не готова!'

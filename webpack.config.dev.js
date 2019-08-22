@@ -1,5 +1,4 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const path = require('path');
 
 module.exports = {
   entry: ['react-hot-loader/patch', './src/index.js'],
@@ -11,8 +10,9 @@ module.exports = {
   },
   stats: 'errors-warnings',
   devServer: {
+    historyApiFallback: true,
     hotOnly: true,
-    contentBase: path.resolve(__dirname, 'public')
+    contentBase: './'
   },
   module: {
     rules: [
