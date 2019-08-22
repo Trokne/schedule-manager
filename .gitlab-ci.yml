@@ -18,5 +18,6 @@ Deploy:
     - apt-get install -y ruby-dev
     - gem install dpl
   script:
+    - ls
     - cd public/
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
