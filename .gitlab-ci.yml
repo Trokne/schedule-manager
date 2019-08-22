@@ -1,9 +1,10 @@
-image: node:latest
 stages:
   - Build
 
 Dependencies:
-  image: ruby:latest
+  image:
+    - node:latest
+    - ruby:latest
   stage: Build
   before_script:
     - apt-get update -qy
