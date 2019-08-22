@@ -2,17 +2,19 @@ stages:
   - Build
 
 Dependencies:
-  image:
-    - node:latest
-    - ruby:latest
+  image: node:latest
+  stage: Build
+  script:
+    - npm install
+    - npm run build
+
+Deploy:
+  image: ruby:latest
   stage: Build
   before_script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-
   script:
-    - npm install
-    - npm run build
     - cd public
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
