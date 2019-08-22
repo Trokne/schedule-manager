@@ -2,10 +2,17 @@ stages:
   - Dependencies
   - Deploy
 
+cache:
+  paths:
+    - node_modules/
+    - public/
+
 Dependencies:
   image: node:latest
   stage: Dependencies
   script:
+    - rm -Rf node_modules/
+    - rm -Rf public/
     - npm install
     - npm run lint:write
     - npm run build
@@ -18,6 +25,5 @@ Deploy:
     - apt-get install -y ruby-dev
     - gem install dpl
   script:
-    - ls
     - cd public/
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
