@@ -10,6 +10,6 @@ Dependencies:
     - apt-get install -y ruby-dev
     - gem install dpl
   script:
-    - yarn install
-    - yarn build
+    - npm install
+    - npm run build
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
