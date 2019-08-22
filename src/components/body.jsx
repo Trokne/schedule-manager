@@ -7,7 +7,9 @@ const Body = () => (
   <Fragment>
     <Switch>
       <Route exact path="/" component={MainPage} />
-      <Route path="/auth" component={AuthPage} />
+      <Route exact path="/auth" component={AuthPage} />
+      <Route exact path="/auth/" component={AuthPage} />
+      <Route exact path="/auth/register" component={AuthPage} />
     </Switch>
   </Fragment>
 );

@@ -12,7 +12,13 @@
   ],
   "env": {
     "development": {
-      "plugins": ["react-hot-loader/babel"]
+      "plugins": [
+        "react-hot-loader/babel",
+        ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]
+      ]
+    },
+    "production": {
+      "plugins": [["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }]]
     }
   }
 }
