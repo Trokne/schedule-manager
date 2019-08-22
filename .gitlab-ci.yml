@@ -8,7 +8,7 @@ cache:
     - public/
 
 Dependencies:
-  image: node:latest
+  image: node:10.16.0
   stage: Dependencies
   script:
     - rm -Rf node_modules/
