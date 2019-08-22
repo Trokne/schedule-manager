@@ -6,6 +6,7 @@ Dependencies:
   stage: Build
   script:
     - npm install
+    - npm run lint:write
     - npm run build
 
 Deploy:
