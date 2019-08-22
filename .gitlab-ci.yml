@@ -1,9 +1,10 @@
 stages:
-  - Build
+  - Dependencies
+  - Deploy
 
 Dependencies:
   image: node:latest
-  stage: Build
+  stage: Dependencies
   script:
     - npm install
     - npm run lint:write
@@ -11,12 +12,11 @@ Dependencies:
 
 Deploy:
   image: ruby:latest
-  stage: Build
+  stage: Deploy
   before_script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
   script:
-    - ls
     - cd public/
     - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
