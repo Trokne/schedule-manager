@@ -1,12 +1,29 @@
 stages:
-    - Build
+  - Dependencies
+  - Deploy
+
+cache:
+  paths:
+    - node_modules/
+    - public/
 
 Dependencies:
-    image: node:lts
-    stage: Build
-    script: 
-        - yarn install
-    only:
-        - /^release-.*$/
-    except:
-        - branches
+  image: node:10.16.0
+  stage: Dependencies
+  script:
+    - rm -Rf node_modules/
+    - rm -Rf public/
+    - npm install
+    - npm run lint:write
+    - npm run build
+
+Deploy:
+  image: ruby:latest
+  stage: Deploy
+  before_script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+  script:
+    - cd public/
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY --skip_cleanup
