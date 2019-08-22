@@ -1,12 +1,12 @@
 stages:
-    - Build
+  - Build
 
 Dependencies:
-    image: node:lts
-    stage: Build
-    script: 
-        - yarn install
-    only:
-        - /^release-.*$/
-    except:
-        - branches
+  image: node:lts
+  stage: Build
+  before_script:
+    - gem install dpl
+  script:
+    - yarn install
+    - yarn lint:write
+    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY
