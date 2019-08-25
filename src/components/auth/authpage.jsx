@@ -7,8 +7,9 @@ import Register from '../../containers/auth/registertab';
 
 class AuthPage extends Component {
   componentDidMount() {
-    const { setAuthActivity } = this.props;
+    const { setAuthActivity, isLogin, goHome } = this.props;
     setAuthActivity(true);
+    if (isLogin) goHome();
   }
 
   render() {
@@ -51,7 +52,9 @@ class AuthPage extends Component {
 AuthPage.propTypes = {
   isAuthSelected: PropTypes.bool.isRequired,
   setAuthActivity: PropTypes.func.isRequired,
-  location: PropTypes.any
+  goHome: PropTypes.func.isRequired,
+  location: PropTypes.any,
+  isLogin: PropTypes.bool
 };
 
 export default AuthPage;

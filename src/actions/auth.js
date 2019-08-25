@@ -1,10 +1,19 @@
-import { push } from 'connected-react-router';
+import * as navigation from './navigation';
 import * as types from '../constants/auth';
 import * as connection from '../constants/network/accountApi';
 
 import http from '../services/http';
 import * as notifications from './notification';
 import getErrorMessage from './errors';
+
+const logout = () => ({
+  type: types.LOGOUT
+});
+
+export const logoutAndGoHome = () => async dispatch => {
+  dispatch(navigation.goHome());
+  dispatch(logout());
+};
 
 export const openAuth = isAuthSelected => ({ type: types.OPEN_AUTH, payload: isAuthSelected });
 
@@ -18,7 +27,7 @@ export const tryLogin = (name, password) => async dispatch => {
     .post(connection.login, { login: name, password })
     .then(response => {
       notifications.openSuccessNotifaction(`Добро пожаловать, ${name}!`, '');
-      dispatch(push('/'));
+      dispatch(navigation.goHome());
       dispatch(loginOnSite(name, password, response.data.Content));
     })
     .catch(error => {
@@ -30,7 +39,7 @@ export const tryRegister = (name, password) => async dispatch => {
   http
     .post(connection.register, { login: name, password })
     .then(() => {
-      dispatch(push('/auth'));
+      dispatch(navigation.route('/auth'));
       notifications.openSuccessNotifaction('Регистрация успешно завершена!');
     })
     .catch(error => {
