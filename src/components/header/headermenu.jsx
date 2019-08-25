@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Button } from 'antd';
 import { Link } from 'react-router-dom';
 import '../../styles/headermenu.pcss';
+import Avatar from '../../containers/header/avatar';
 
 const HeaderMenu = props => {
-  const { isLogin, logout } = props;
+  const { isLogin } = props;
   return (
     <div className="menu">
       {!isLogin ? (
@@ -13,9 +14,9 @@ const HeaderMenu = props => {
           <Link to="/auth">Войти</Link>
         </Button>
       ) : (
-        <Button type="primary" onClick={logout}>
-          Выйти
-        </Button>
+        <div>
+          <Avatar />
+        </div>
       )}
     </div>
   );

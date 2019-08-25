@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import '../../styles/header.pcss';
-import HeadMenu from '../../containers/headermenu';
+import HeadMenu from '../../containers/header/headermenu';
 
 const Header = () => (
   <Fragment>
