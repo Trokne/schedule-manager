@@ -34,14 +34,15 @@
       border-bottom: 1px solid $element-border-color;
 
       .tab {
+        color: $element-foreground-color;
         width: 50%;
-        background-color: $container-background-color;
+        background-color: $element-background-color;
         flex-grow: 1;
         display: flex;
         justify-content: center;
         align-items: center;
         text-decoration: none;
-        color: $element-foreground-color;
+        color: $element-unselected-foreground-color;
       }
 
       .tab:first-child.selected {
@@ -53,8 +54,8 @@
       }
 
       .tab.selected {
-        background-color: $element-background-color;
-        border-bottom: 2px solid $element-border-color;
+        color: $element-foreground-color;
+        background-color: $container-background-color;
       }
     }
   }

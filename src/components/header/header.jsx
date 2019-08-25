@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { NavLink } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import '../../styles/header.pcss';
 import HeadMenu from '../../containers/headermenu';
 
@@ -14,4 +14,4 @@ const Header = () => (
   </Fragment>
 );
 
-export default Header;
+export default withRouter(Header);

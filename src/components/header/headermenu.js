@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import '../../styles/headermenu.pcss';
 
 const HeaderMenu = props => {
-  const { isLogin } = props;
+  const { isLogin, logout } = props;
   return (
     <div className="menu">
       {!isLogin ? (
@@ -13,14 +13,17 @@ const HeaderMenu = props => {
           <Link to="/auth">Войти</Link>
         </Button>
       ) : (
-        'Авторизация ещё не готова!'
+        <Button type="primary" onClick={logout}>
+          Выйти
+        </Button>
       )}
     </div>
   );
 };
 
 HeaderMenu.propTypes = {
-  isLogin: PropTypes.bool.isRequired
+  isLogin: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired
 };
 
 export default HeaderMenu;

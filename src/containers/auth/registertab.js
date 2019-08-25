@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Register from '../../components/auth/tabs/register';
-import openAuth from '../../actions/auth';
-
-// const mapStatetoProps = state => ({
-//   isAuthSelected: state.authPage.isAuthSelected
-// });
+import * as authFunctions from '../../actions/auth';
 
 const mapDispatchToProps = dispatch => ({
-  setAuthActivity: () => dispatch(openAuth(false))
+  setAuthActivity: () => dispatch(authFunctions.openAuth(false)),
+  handleSumbit: (e, form) => dispatch(authFunctions.handleRegisterSumbit(e, form))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Register);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Register)
+);

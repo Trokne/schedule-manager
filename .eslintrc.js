@@ -15,6 +15,8 @@ module.exports = {
     }
   },
   rules: {
+    'operator-linebreak': [2, 'after', { overrides: { '?': 'after' } }],
+
     /* Prettier */
     'prettier/prettier': ['error'],
 
