@@ -1,7 +1,12 @@
 import * as types from '../constants/auth';
 
 const initialState = { isLogin: false, login: '', password: '', token: '' };
-const localStorageState = JSON.parse(localStorage.getItem(types.LOGIN));
+
+const loginInfo = localStorage.getItem(types.LOGIN);
+let localStorageState;
+if (loginInfo) {
+  localStorageState = JSON.parse(loginInfo);
+}
 
 export default function user(state = localStorageState || initialState, action) {
   let currentState;
