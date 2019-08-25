@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import '../../styles/authpage.pcss';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Login from '../../containers/auth/authtab';
 import Register from '../../containers/auth/registertab';
@@ -12,6 +12,7 @@ class AuthPage extends Component {
   }
 
   render() {
+    const { setAuthActivity } = this.props;
     const { isAuthSelected } = this.props;
 
     return (
@@ -19,10 +20,18 @@ class AuthPage extends Component {
         <div className="container">
           <div className="box">
             <div className="header">
-              <NavLink className={`tab ${isAuthSelected ? 'selected' : ''}`} to="/auth">
+              <NavLink
+                onClick={() => setAuthActivity(true)}
+                className={`tab ${isAuthSelected ? 'selected' : ''}`}
+                to="/auth"
+              >
                 Вход
               </NavLink>
-              <NavLink className={`tab ${!isAuthSelected ? 'selected' : ''}`} to="/auth/register">
+              <NavLink
+                onClick={() => setAuthActivity(false)}
+                className={`tab ${!isAuthSelected ? 'selected' : ''}`}
+                to="/auth/register"
+              >
                 Регистрация
               </NavLink>
             </div>
@@ -41,7 +50,8 @@ class AuthPage extends Component {
 
 AuthPage.propTypes = {
   isAuthSelected: PropTypes.bool.isRequired,
-  setAuthActivity: PropTypes.func.isRequired
+  setAuthActivity: PropTypes.func.isRequired,
+  location: PropTypes.any
 };
 
 export default AuthPage;

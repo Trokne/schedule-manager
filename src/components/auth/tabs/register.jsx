@@ -12,10 +12,16 @@ class Register extends Component {
 
   render() {
     const { form } = this.props;
+    const { handleSumbit } = this.props;
     const { getFieldDecorator } = form;
     return (
       <Fragment>
-        <Form className="login-form">
+        <Form
+          className="login-form"
+          onSubmit={event => {
+            handleSumbit(event, form);
+          }}
+        >
           <Form.Item className="auth-input">
             {getFieldDecorator('username', {
               rules: [{ required: true, message: 'Пожалуйста, введите имя пользователя!' }]
@@ -39,7 +45,7 @@ class Register extends Component {
           </Form.Item>
           <Form.Item className="auth-input">
             <Button type="primary" htmlType="submit" className="button">
-              Регистрация
+              Зарегистрироваться
             </Button>
           </Form.Item>
         </Form>
@@ -50,6 +56,7 @@ class Register extends Component {
 
 Register.propTypes = {
   setAuthActivity: PropTypes.func.isRequired,
+  handleSumbit: PropTypes.func.isRequired,
   form: PropTypes.any
 };
 

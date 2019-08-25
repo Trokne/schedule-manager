@@ -1,16 +1,19 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import AuthPage from '../../components/auth/authpage';
-import openAuth from '../../actions/auth';
+import * as actions from '../../actions/auth';
 
 const mapStatetoProps = state => ({
   isAuthSelected: state.authPage.isAuthSelected
 });
 
 const mapDispatchToProps = dispatch => ({
-  setAuthActivity: isActive => dispatch(openAuth(isActive))
+  setAuthActivity: isActive => dispatch(actions.openAuth(isActive))
 });
 
-export default connect(
-  mapStatetoProps,
-  mapDispatchToProps
-)(AuthPage);
+export default withRouter(
+  connect(
+    mapStatetoProps,
+    mapDispatchToProps
+  )(AuthPage)
+);

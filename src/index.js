@@ -1,18 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { ConnectedRouter } from 'connected-react-router';
 import { Provider } from 'react-redux';
-import store from './configs/store';
+import configureStore, { history } from './configs/store';
 import App from './components/app';
 import './styles/index.pcss';
 import './styles/fonts.pcss';
 import 'typeface-roboto';
 
+const store = configureStore();
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App />
-    </Router>
+    </ConnectedRouter>
   </Provider>,
   document.getElementById('root')
 );

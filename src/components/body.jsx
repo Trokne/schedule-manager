@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 import MainPage from './mainpage';
 import AuthPage from '../containers/auth/authpage';
 
@@ -14,4 +14,4 @@ const Body = () => (
   </Fragment>
 );
 
-export default Body;
+export default withRouter(Body);

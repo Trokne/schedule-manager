@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Login from '../../components/auth/tabs/login';
-import openAuth from '../../actions/auth';
-
-// const mapStatetoProps = state => ({
-//   isAuthSelected: state.authPage.isAuthSelected
-// });
+import * as authFunctions from '../../actions/auth';
 
 const mapDispatchToProps = dispatch => ({
-  setAuthActivity: () => dispatch(openAuth(true))
+  setAuthActivity: () => dispatch(authFunctions.openAuth(true)),
+  handleSumbit: (e, form) => dispatch(authFunctions.handleLoginSumbit(e, form))
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(Login);
+export default withRouter(
+  connect(
+    null,
+    mapDispatchToProps
+  )(Login)
+);
