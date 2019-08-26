@@ -4,6 +4,7 @@ import user from './user';
 import authPage from './authpage';
 import avatar from './avatar';
 import loader from './loader';
+import groups from './groups';
 
 const createRootReducer = history => {
   return combineReducers({
@@ -11,7 +12,8 @@ const createRootReducer = history => {
     user,
     authPage,
     avatar,
-    loader
+    loader,
+    groups
   });
 };
 

@@ -18,7 +18,12 @@ module.exports = {
     'operator-linebreak': [2, 'after', { overrides: { '?': 'after' } }],
 
     /* Prettier */
-    'prettier/prettier': ['error'],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto'
+      }
+    ],
 
     /* Несовместимые с prettier правила */
     'arrow-parens': 'off',
