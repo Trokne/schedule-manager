@@ -1,0 +1,24 @@
+@import 'colors.pcss';
+@import 'variables.pcss';
+
+.menu {
+  display: flex;
+  align-items: center;
+
+  .menu-item {
+    margin: 20px;
+    color: $element-foreground-color;
+    font-family: 'Roboto';
+    font-weight: 200;
+    font-size: $header-fontsize;
+    text-transform: lowercase;
+  }
+
+  .menu-item:hover {
+    color: $header-hover-color;
+  }
+
+  .menu-item:active {
+    color: $header-active-color;
+  }
+}

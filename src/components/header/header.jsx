@@ -1,15 +1,21 @@
 import React, { Fragment } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
 import '../../styles/header.pcss';
-import HeadMenu from '../../containers/header/headermenu';
+import HeadMenu from '../../containers/header/rightmenu';
+import LeftMenu from './leftmenu';
 
 const Header = () => (
   <Fragment>
     <div className="header-body">
-      <NavLink exact to="/" className="site-name">
-        Менеджер расписаний
-      </NavLink>
-      <HeadMenu className="menu" />
+      <div className="left-part">
+        <NavLink exact to="/" className="site-name">
+          Менеджер расписаний
+        </NavLink>
+        <div className="leftMenu">
+          <LeftMenu />
+        </div>
+      </div>
+      <HeadMenu />
     </div>
   </Fragment>
 );

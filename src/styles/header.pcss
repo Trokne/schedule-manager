@@ -8,13 +8,34 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 
-  .site-name {
-    padding-left: $default-padding;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: $element-fontsize;
-    color: $element-foreground-color;
-    text-decoration: none;
+  .left-part {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .site-name {
+      padding-left: $default-padding;
+      font-weight: bold;
+      text-transform: lowercase;
+      font-size: $header-fontsize;
+      color: $element-foreground-color;
+      text-decoration: none;
+      width: 300px;
+    }
+
+    .site-name:hover {
+      color: $header-hover-color;
+    }
+
+    .site-name:active {
+      color: $header-active-color;
+    }
+
+    .leftMenu {
+      width: 100%;
+      margin-left: $default-padding;
+    }
   }
 }
