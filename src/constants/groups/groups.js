@@ -1,0 +1,2 @@
+const ADD_GROUPS_IN_LIST = 'ADD_GROUPS_IN_LIST';
+export default ADD_GROUPS_IN_LIST;

@@ -1,13 +1,18 @@
 import { connect } from 'react-redux';
 import Groups from '../../components/groups/groups';
-import changeAddingGroupsVisibility from '../../actions/groups/addgroups';
+import * as addingActions from '../../actions/groups/addgroups';
+import fetchGroups from '../../actions/groups/groups';
 
 const mapStateToProps = state => ({
-  isOpenedAddingGroups: state.groups.isOpenedAddingGroups
+  isOpenedAddingGroups: state.groups.isOpenedAddingGroups,
+  universities: state.groups.universities,
+  groups: state.groups.groupValues
 });
 
 const mapDispatchToProps = dispatch => ({
-  openAddingGroups: () => dispatch(changeAddingGroupsVisibility(true))
+  openAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(true)),
+  fetchUniversities: () => dispatch(addingActions.fetchUniversities()),
+  fetchGroups: () => dispatch(fetchGroups())
 });
 
 export default connect(

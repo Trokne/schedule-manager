@@ -6,32 +6,57 @@ import AddingGroups from '../../containers/groups/addinggroups';
 
 const { Column } = Table;
 
-const Groups = props => {
-  const { openAddingGroups } = props;
-  return (
-    <div className="body">
-      <div className="box add-item">
-        <Button icon="plus" onClick={openAddingGroups}>
-          Добавить группу
-        </Button>
-        <AddingGroups />
+class Groups extends React.Component {
+  componentDidMount() {
+    const { universities, fetchUniversities, groups, fetchGroups } = this.props;
+    if (universities.length === 0 || universities === undefined) {
+      fetchUniversities();
+    }
+
+    if (groups.length === 0 || groups === undefined) {
+      fetchGroups();
+    }
+  }
+
+  render() {
+    const { openAddingGroups, groups } = this.props;
+    return (
+      <div className="body">
+        <div className="box add-item">
+          <Button icon="plus" onClick={openAddingGroups}>
+            Добавить группу
+          </Button>
+          <AddingGroups />
+        </div>
+        <div className="box groups">
+          <Table className="table" dataSource={groups} rowKey="Id">
+            <Column
+              title="Группа"
+              dataIndex="Name"
+              key="Name"
+              sorter={(a, b) => a.Name.length - b.Name.length}
+            />
+            <Column title="Описание" dataIndex="Description" key="Description" />
+            <Column
+              title="Университет"
+              dataIndex="UniversityName"
+              key="UniversityName"
+              sorter={(a, b) => a.UniversityName.length - b.UniversityName.length}
+            />
+          </Table>
+        </div>
       </div>
-      <div className="box groups">
-        <Table className="table">
-          <Column title="Группа" dataIndex="name" key="name" />
-          <Column title="Начало обучения" dataIndex="startYear" key="startYear" />
-          <Column title="Окончание обучения" dataIndex="endYear" key="endYear" />
-          <Column title="Университет" dataIndex="university" key="university" />
-          <Column title="Город" dataIndex="city" key="city" />
-        </Table>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Groups.propTypes = {
   openAddingGroups: PropTypes.func.isRequired,
-  isOpenedAddingGroups: PropTypes.bool.isRequired
+  isOpenedAddingGroups: PropTypes.bool.isRequired,
+  universities: PropTypes.array,
+  groups: PropTypes.array,
+  fetchUniversities: PropTypes.func.isRequired,
+  fetchGroups: PropTypes.func.isRequired
 };
 
 export default Groups;

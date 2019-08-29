@@ -27,6 +27,7 @@ class Register extends Component {
                 rules: [{ required: true, message: 'Пожалуйста, введите имя пользователя!' }]
               })(
                 <Input
+                  maxLength="30"
                   prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   placeholder="Имя пользователя"
                 />
@@ -37,6 +38,7 @@ class Register extends Component {
                 rules: [{ required: true, message: 'Пожалуйста, введите пароль!' }]
               })(
                 <Input
+                  maxLength="30"
                   prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                   type="password"
                   placeholder="Пароль"

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import '../styles/mainpage.pcss';
+import Groups from '../containers/groups/groups';
 
 const MainPage = () => (
   <Fragment>
@@ -8,6 +9,7 @@ const MainPage = () => (
       <div className="description">
         Создавайте группы, отмечайте домашние задания, будьте в тренде!
       </div>
+      <Groups />
     </div>
   </Fragment>
 );

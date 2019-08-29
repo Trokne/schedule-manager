@@ -1,13 +1,22 @@
 import React from 'react';
-import '../../styles/groups.pcss';
+import '../../styles/addinggroups.pcss';
 import PropTypes from 'prop-types';
-import { Button, Modal, Form, Input } from 'antd';
+import { Button, Modal, Form, Input, Select, Spin } from 'antd';
+
+const { TextArea } = Input;
 
 const AddingGroups = props => {
-  const { isOpenedAddingGroups, closeAddingGroups, form } = props;
+  const {
+    isOpenedAddingGroups,
+    closeAddingGroups,
+    form,
+    universityOptions,
+    submitGroup,
+    isLoading
+  } = props;
   const { getFieldDecorator } = form;
   return (
-    <Form onSubmit={closeAddingGroups}>
+    <Form>
       <Modal
         visible={isOpenedAddingGroups}
         title="Добавление группы"
@@ -16,16 +25,49 @@ const AddingGroups = props => {
           <Button key="back" onClick={closeAddingGroups}>
             Отмена
           </Button>,
-          <Button htmlType="submit" key="submit" type="primary">
+          <Button
+            htmlType="submit"
+            key="submit"
+            type="primary"
+            onClick={() => submitGroup(form)}
+            disabled={isLoading}
+          >
             Добавить
           </Button>
         ]}
       >
-        <Form.Item className="group-name">
-          {getFieldDecorator('name', {
-            rules: [{ required: true, message: 'Пожалуйста, введите название группы!' }]
-          })(<Input placeholder="Название группы" />)}
-        </Form.Item>
+        <Spin spinning={isLoading}>
+          <Form.Item>
+            {getFieldDecorator('name', {
+              rules: [{ required: true, message: 'Пожалуйста, введите название группы!' }]
+            })(<Input placeholder="Название группы" maxLength={30} />)}
+          </Form.Item>
+          <Form.Item className="description-form">
+            {getFieldDecorator('description', {
+              rules: [{ required: false, message: 'Пожалуйста, введите описание группы!' }]
+            })(
+              <TextArea
+                placeholder="Описание группы"
+                autosize={{ minRows: 1, maxRows: 10 }}
+                maxLength="400"
+              />
+            )}
+          </Form.Item>
+          <Form.Item className="university-form">
+            {getFieldDecorator('university', {
+              rules: [{ required: true, message: 'Пожалуйста, выберите университет!' }]
+            })(
+              <Select
+                showSearch
+                className="select-university"
+                placeholder="Университет"
+                optionFilterProp="children"
+              >
+                {universityOptions}
+              </Select>
+            )}
+          </Form.Item>
+        </Spin>
       </Modal>
     </Form>
   );
@@ -33,8 +75,11 @@ const AddingGroups = props => {
 
 AddingGroups.propTypes = {
   closeAddingGroups: PropTypes.func.isRequired,
+  submitGroup: PropTypes.func.isRequired,
   isOpenedAddingGroups: PropTypes.bool.isRequired,
-  form: PropTypes.any
+  form: PropTypes.any,
+  universityOptions: PropTypes.array,
+  isLoading: PropTypes.bool.isRequired
 };
 
 export default Form.create({ name: 'addingGroups' })(AddingGroups);
