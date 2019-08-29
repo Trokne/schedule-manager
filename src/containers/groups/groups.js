@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  openAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(true)),
+  openAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(true, true)),
   fetchUniversities: () => dispatch(addingActions.fetchUniversities()),
   fetchGroups: () => dispatch(fetchGroups())
 });

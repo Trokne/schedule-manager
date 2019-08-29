@@ -6,7 +6,8 @@ const initialState = {
   isAddState: true,
   groupValues: [],
   universities: [],
-  universityOptions: []
+  universityOptions: [],
+  currentGroup: null
 };
 
 export default function groups(state = initialState, action) {
@@ -14,7 +15,8 @@ export default function groups(state = initialState, action) {
     case addTypes.CHANGE_ADDING_GROUPS_VISIBILITY:
       return {
         ...state,
-        isOpenedAddingGroups: action.payload
+        isOpenedAddingGroups: action.payload.isOpenedAddingGroups,
+        isAddState: action.payload.isAddState
       };
     case addTypes.ADD_FETCHED_UNIVERSITIES:
       return {
@@ -35,6 +37,18 @@ export default function groups(state = initialState, action) {
       return {
         ...state,
         groupValues: state.groupValues.filter(g => g.Id !== action.payload)
+      };
+    case editTypes.SET_CURRENT_GROUP:
+      return {
+        ...state,
+        currentGroup: action.payload
+      };
+    case addTypes.UPDATE_GROUP_IN_LIST:
+      return {
+        ...state,
+        groupValues: state.groupValues
+          .filter(g => g.Id !== action.payload.Id)
+          .concat(action.payload.Id)
       };
     default:
       return state;

@@ -1,2 +1,3 @@
 export const DELETE_GROUP = 'DELETE_GROUP';
 export const EDIT_GROUP = 'EDIT_GROUP';
+export const SET_CURRENT_GROUP = 'SET_CURRENT_GROUP';

@@ -13,12 +13,25 @@ const AddGroupsModal = props => {
     universityOptions,
     submitGroup,
     isLoading,
-    isAddState
+    isAddState,
+    currentGroup
   } = props;
 
   const { getFieldDecorator } = form;
   const title = isAddState ? 'Добавление группы' : 'Редактирование группы';
   const okButtonText = isAddState ? 'Добавить' : 'Изменить';
+  let defaultName;
+  let defaultUniversityId;
+  let defaultDescription;
+
+  if (currentGroup !== undefined && currentGroup !== null) {
+    defaultName = currentGroup.Name;
+    defaultDescription = currentGroup.Description;
+    defaultUniversityId = currentGroup.UniversityId;
+  } else {
+    defaultName = '';
+    defaultDescription = '';
+  }
   return (
     <Form>
       <Modal
@@ -33,7 +46,7 @@ const AddGroupsModal = props => {
             htmlType="submit"
             key="submit"
             type="primary"
-            onClick={() => submitGroup(form)}
+            onClick={() => submitGroup(form, isAddState)}
             disabled={isLoading}
           >
             {okButtonText}
@@ -43,11 +56,13 @@ const AddGroupsModal = props => {
         <Spin spinning={isLoading}>
           <Form.Item>
             {getFieldDecorator('name', {
+              initialValue: defaultName,
               rules: [{ required: true, message: 'Пожалуйста, введите название группы!' }]
             })(<Input placeholder="Название группы" maxLength={30} />)}
           </Form.Item>
           <Form.Item className="description-form">
             {getFieldDecorator('description', {
+              initialValue: defaultDescription,
               rules: [{ required: false, message: 'Пожалуйста, введите описание группы!' }]
             })(
               <TextArea
@@ -59,6 +74,7 @@ const AddGroupsModal = props => {
           </Form.Item>
           <Form.Item className="university-form">
             {getFieldDecorator('university', {
+              initialValue: defaultUniversityId,
               rules: [{ required: true, message: 'Пожалуйста, выберите университет!' }]
             })(
               <Select
@@ -84,7 +100,8 @@ AddGroupsModal.propTypes = {
   form: PropTypes.any,
   universityOptions: PropTypes.array,
   isLoading: PropTypes.bool.isRequired,
-  isAddState: PropTypes.bool.isRequired
+  isAddState: PropTypes.bool.isRequired,
+  currentGroup: PropTypes.object
 };
 
 export default Form.create({ name: 'addingGroups' })(AddGroupsModal);

@@ -6,15 +6,16 @@ const mapStateToProps = state => ({
   universityOptions: state.groups.universityOptions,
   isOpenedAddingGroups: state.groups.isOpenedAddingGroups,
   isLoading: state.loader.isLoading,
-  isAddState: state.groups.isAddState
+  isAddState: state.groups.isAddState,
+  currentGroup: state.groups.currentGroup
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(false)),
+  closeAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(false, true)),
   universityFilterOptions: (input, option) => {
     dispatch(addingActions.universityFilterOptions(input, option));
   },
-  submitGroup: form => dispatch(addingActions.submitGroup(form))
+  submitGroup: (form, isAddState) => dispatch(addingActions.submitGroup(form, isAddState))
 });
 
 export default connect(
