@@ -12,14 +12,18 @@ const AddGroupsModal = props => {
     form,
     universityOptions,
     submitGroup,
-    isLoading
+    isLoading,
+    isAddState
   } = props;
+
   const { getFieldDecorator } = form;
+  const title = isAddState ? 'Добавление группы' : 'Редактирование группы';
+  const okButtonText = isAddState ? 'Добавить' : 'Изменить';
   return (
     <Form>
       <Modal
         visible={isOpenedAddingGroups}
-        title="Добавление группы"
+        title={title}
         onCancel={closeAddingGroups}
         footer={[
           <Button key="back" onClick={closeAddingGroups}>
@@ -32,7 +36,7 @@ const AddGroupsModal = props => {
             onClick={() => submitGroup(form)}
             disabled={isLoading}
           >
-            Добавить
+            {okButtonText}
           </Button>
         ]}
       >
@@ -79,7 +83,8 @@ AddGroupsModal.propTypes = {
   isOpenedAddingGroups: PropTypes.bool.isRequired,
   form: PropTypes.any,
   universityOptions: PropTypes.array,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
+  isAddState: PropTypes.bool.isRequired
 };
 
 export default Form.create({ name: 'addingGroups' })(AddGroupsModal);

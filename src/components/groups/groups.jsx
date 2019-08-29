@@ -2,6 +2,7 @@ import React from 'react';
 import '../../styles/groups.pcss';
 import PropTypes from 'prop-types';
 import { Button, Table } from 'antd';
+import GroupPopover from '../../containers/groups/group-popover';
 import AddGroupsModal from '../../containers/groups/add-groups-modal';
 
 const { Column } = Table;
@@ -34,13 +35,20 @@ class Groups extends React.Component {
               title="Группа"
               dataIndex="Name"
               key="Name"
+              render={(value, record) => <GroupPopover value={value} record={record} />}
               sorter={(a, b) => a.Name.length - b.Name.length}
             />
-            <Column title="Описание" dataIndex="Description" key="Description" />
+            <Column
+              title="Описание"
+              dataIndex="Description"
+              key="Description"
+              render={(value, record) => <GroupPopover value={value} record={record} />}
+            />
             <Column
               title="Университет"
               dataIndex="UniversityName"
               key="UniversityName"
+              render={(value, record) => <GroupPopover value={value} record={record} />}
               sorter={(a, b) => a.UniversityName.length - b.UniversityName.length}
             />
           </Table>

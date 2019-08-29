@@ -5,7 +5,8 @@ import * as addingActions from '../../actions/groups/add-groups-modal';
 const mapStateToProps = state => ({
   universityOptions: state.groups.universityOptions,
   isOpenedAddingGroups: state.groups.isOpenedAddingGroups,
-  isLoading: state.loader.isLoading
+  isLoading: state.loader.isLoading,
+  isAddState: state.groups.isAddState
 });
 
 const mapDispatchToProps = dispatch => ({
