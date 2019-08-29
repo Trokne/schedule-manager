@@ -1,6 +1,6 @@
 import { hot } from 'react-hot-loader/root';
 import React, { Fragment } from 'react';
-import Header from './header/header';
+import Header from '../header/header';
 import Body from './body';
 
 const App = () => (

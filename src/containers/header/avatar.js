@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Avatar from '../../components/header/avatar';
-import * as authFunctions from '../../actions/auth';
-import changePopupVisibility from '../../actions/avatar';
+import logoutAndGoHome from '../../actions/authorization/logout';
+import changePopupVisibility from '../../actions/header/avatar';
 
 const mapStatetoProps = state => ({
   login: state.user.login,
@@ -10,7 +10,7 @@ const mapStatetoProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(authFunctions.logoutAndGoHome()),
+  logout: () => dispatch(logoutAndGoHome()),
   changePopupVisibility: isVisible => dispatch(changePopupVisibility(isVisible))
 });
 

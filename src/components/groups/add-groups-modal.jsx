@@ -1,11 +1,11 @@
 import React from 'react';
-import '../../styles/addinggroups.pcss';
+import '../../styles/add-groups-modal.pcss';
 import PropTypes from 'prop-types';
 import { Button, Modal, Form, Input, Select, Spin } from 'antd';
 
 const { TextArea } = Input;
 
-const AddingGroups = props => {
+const AddGroupsModal = props => {
   const {
     isOpenedAddingGroups,
     closeAddingGroups,
@@ -73,7 +73,7 @@ const AddingGroups = props => {
   );
 };
 
-AddingGroups.propTypes = {
+AddGroupsModal.propTypes = {
   closeAddingGroups: PropTypes.func.isRequired,
   submitGroup: PropTypes.func.isRequired,
   isOpenedAddingGroups: PropTypes.bool.isRequired,
@@ -82,4 +82,4 @@ AddingGroups.propTypes = {
   isLoading: PropTypes.bool.isRequired
 };
 
-export default Form.create({ name: 'addingGroups' })(AddingGroups);
+export default Form.create({ name: 'addingGroups' })(AddGroupsModal);

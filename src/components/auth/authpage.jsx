@@ -2,18 +2,18 @@ import React, { Fragment, Component } from 'react';
 import '../../styles/authpage.pcss';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Login from '../../containers/auth/authtab';
-import Register from '../../containers/auth/registertab';
+import LoginTab from '../../containers/authorization/tabs/login';
+import RegisterTab from '../../containers/authorization/tabs/register';
 
 class AuthPage extends Component {
   componentDidMount() {
-    const { setAuthActivity, isLogin, goHome } = this.props;
-    setAuthActivity(true);
+    const { setAuthTabActivity, isLogin, goHome } = this.props;
+    setAuthTabActivity(true);
     if (isLogin) goHome();
   }
 
   render() {
-    const { setAuthActivity } = this.props;
+    const { setAuthTabActivity } = this.props;
     const { isAuthSelected } = this.props;
 
     return (
@@ -22,14 +22,14 @@ class AuthPage extends Component {
           <div className="box">
             <div className="header">
               <NavLink
-                onClick={() => setAuthActivity(true)}
+                onClick={() => setAuthTabActivity(true)}
                 className={`tab ${isAuthSelected ? 'selected' : ''}`}
                 to="/auth"
               >
                 Вход
               </NavLink>
               <NavLink
-                onClick={() => setAuthActivity(false)}
+                onClick={() => setAuthTabActivity(false)}
                 className={`tab ${!isAuthSelected ? 'selected' : ''}`}
                 to="/auth/register"
               >
@@ -38,8 +38,8 @@ class AuthPage extends Component {
             </div>
             <div className="content">
               <Switch>
-                <Route exact path="/auth" component={Login} />
-                <Route path="/auth/register" component={Register} />
+                <Route exact path="/auth" component={LoginTab} />
+                <Route path="/auth/register" component={RegisterTab} />
               </Switch>
             </div>
           </div>
@@ -51,7 +51,7 @@ class AuthPage extends Component {
 
 AuthPage.propTypes = {
   isAuthSelected: PropTypes.bool.isRequired,
-  setAuthActivity: PropTypes.func.isRequired,
+  setAuthTabActivity: PropTypes.func.isRequired,
   goHome: PropTypes.func.isRequired,
   location: PropTypes.any,
   isLogin: PropTypes.bool

@@ -1,4 +1,4 @@
-import * as types from '../constants/auth';
+import * as types from '../constants/authorization/auth';
 
 const initialState = { isAuthSelected: true };
 

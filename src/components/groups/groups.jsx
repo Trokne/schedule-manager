@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/groups.pcss';
 import PropTypes from 'prop-types';
 import { Button, Table } from 'antd';
-import AddingGroups from '../../containers/groups/addinggroups';
+import AddGroupsModal from '../../containers/groups/add-groups-modal';
 
 const { Column } = Table;
 
@@ -26,7 +26,7 @@ class Groups extends React.Component {
           <Button icon="plus" onClick={openAddingGroups}>
             Добавить группу
           </Button>
-          <AddingGroups />
+          <AddGroupsModal />
         </div>
         <div className="box groups">
           <Table className="table" dataSource={groups} rowKey="Id">

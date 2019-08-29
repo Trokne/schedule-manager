@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import AuthPage from '../../components/auth/authpage';
-import * as authActions from '../../actions/auth';
-import * as navigationActions from '../../actions/navigation';
+import * as authActions from '../../actions/authorization/login';
+import * as navigationActions from '../../actions/network/navigation';
 
 const mapStatetoProps = state => ({
   isAuthSelected: state.authPage.isAuthSelected,
@@ -10,7 +10,7 @@ const mapStatetoProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setAuthActivity: isActive => dispatch(authActions.openAuth(isActive)),
+  setAuthTabActivity: isActive => dispatch(authActions.selectAuthTab(isActive)),
   goHome: () => dispatch(navigationActions.goHome())
 });
 

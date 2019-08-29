@@ -3,7 +3,11 @@ const getErrorMessage = error => {
   const response = error.response;
   if (response !== undefined && response.data.Message !== null) {
     message = response.data.Message.toString();
-  } else message = error.toString();
+  } else if (error !== undefined) {
+    message = error.toString();
+  } else {
+    message = '';
+  }
 
   return message;
 };

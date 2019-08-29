@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
-import '../styles/mainpage.pcss';
-import Groups from '../containers/groups/groups';
+import '../../styles/mainpage.pcss';
+import Groups from '../../containers/groups/groups';
 
 const MainPage = () => (
   <Fragment>

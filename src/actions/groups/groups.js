@@ -1,9 +1,9 @@
 import http from '../../services/http';
 import * as groupsApi from '../../constants/network/groups';
-import * as notifications from '../notification';
-import getErrorMessage from '../errors';
-import changeLoaderState from '../loader';
-import { addGroupInList } from './addgroups';
+import * as notifications from '../decoration/notification';
+import getErrorMessage from '../network/errors';
+import changeLoaderState from '../decoration/loader';
+import { addGroupInList } from './add-groups-modal';
 
 const fetchGroups = () => async dispatch => {
   dispatch(changeLoaderState(true));

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import AddingGroups from '../../components/groups/addinggroups';
-import * as addingActions from '../../actions/groups/addgroups';
+import AddGroupsModal from '../../components/groups/add-groups-modal';
+import * as addingActions from '../../actions/groups/add-groups-modal';
 
 const mapStateToProps = state => ({
   universityOptions: state.groups.universityOptions,
@@ -19,4 +19,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddingGroups);
+)(AddGroupsModal);

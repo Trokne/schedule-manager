@@ -1,4 +1,4 @@
-import CHANGE_LOADER_STATE from '../constants/loader';
+import CHANGE_LOADER_STATE from '../constants/decoration/loader';
 
 const initialState = { isLoading: false };
 

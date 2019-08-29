@@ -1,4 +1,4 @@
-import CHANGE_VISIBLE_STATE from '../constants/avatar';
+import CHANGE_VISIBLE_STATE from '../constants/header/avatar';
 
 const initialState = { isOpenedPopup: false };
 

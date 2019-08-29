@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import MainPage from './mainpage';
-import AuthPage from '../containers/auth/authpage';
-import Groups from '../containers/groups/groups';
+import AuthPage from '../../containers/authorization/authpage';
+import Groups from '../../containers/groups/groups';
 
 const Body = () => (
   <Fragment>

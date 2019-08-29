@@ -1,39 +1,39 @@
 import { Select } from 'antd';
 import React from 'react';
-import * as types from '../../constants/groups/addgroups';
+import * as types from '../../constants/groups/add-groups-modal';
 import http from '../../services/http';
 import * as groupsApi from '../../constants/network/groups';
 import * as universitiesApi from '../../constants/network/universities';
-import * as notifications from '../notification';
-import getErrorMessage from '../errors';
-import changeLoaderState from '../loader';
+import * as notifications from '../decoration/notification';
+import getErrorMessage from '../network/errors';
+import changeLoaderState from '../decoration/loader';
+
+const addUniversityOptions = universityOptions => ({
+  type: types.ADD_UNIVERSITY_OPTIONS,
+  payload: universityOptions
+});
+
+const addFetchedUniversities = data => ({
+  type: types.ADD_FETCHED_UNIVERSITIES,
+  payload: data
+});
+
+const mapUniversityOptions = universityValues => async dispatch => {
+  const universityOptions = universityValues.map(university => (
+    <Select.Option value={university.id} key={university.id}>
+      {university.name}
+    </Select.Option>
+  ));
+  dispatch(addUniversityOptions(universityOptions));
+};
 
 export const changeAddingGroupsVisibility = isVisible => ({
   type: types.CHANGE_ADDING_GROUPS_VISIBILITY,
   payload: isVisible
 });
 
-export const addFetchedUniversities = data => ({
-  type: types.ADD_FETCHED_UNIVERSITIES,
-  payload: data
-});
-
 export const universityFilterOptions = (input, option) => {
   return option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0;
-};
-
-const AddUniversityOptions = universityOptions => ({
-  type: types.ADD_UNIVERSITY_OPTIONS,
-  payload: universityOptions
-});
-
-const MapUniversityOptions = universityValues => async dispatch => {
-  const universityOptions = universityValues.map(university => (
-    <Select.Option value={university.id} key={university.id}>
-      {university.name}
-    </Select.Option>
-  ));
-  dispatch(AddUniversityOptions(universityOptions));
 };
 
 export const fetchUniversities = () => async dispatch => {
@@ -41,7 +41,7 @@ export const fetchUniversities = () => async dispatch => {
     .get(universitiesApi.get)
     .then(response => {
       dispatch(addFetchedUniversities(response.data));
-      dispatch(MapUniversityOptions(response.data));
+      dispatch(mapUniversityOptions(response.data));
     })
     .catch(error => {
       notifications.openErrorNotification('Ошибка загрузки университетов!', getErrorMessage(error));

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import Groups from '../../components/groups/groups';
-import * as addingActions from '../../actions/groups/addgroups';
+import * as addingActions from '../../actions/groups/add-groups-modal';
 import fetchGroups from '../../actions/groups/groups';
 
 const mapStateToProps = state => ({

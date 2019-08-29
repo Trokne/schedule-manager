@@ -1,4 +1,4 @@
-import * as types from '../constants/groups/addgroups';
+import * as types from '../constants/groups/add-groups-modal';
 
 const initialState = {
   isOpenedAddingGroups: false,
