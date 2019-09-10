@@ -1,11 +1,13 @@
 <div align="center"><h1>ScheduleManager (frontend)</h1></div>
-<h3 align="center">Лучшее средство управления расписанием</h3>
+<div align="center"><h3>Лучшее средство управления расписанием</h3></div>
   
-  <p align="center">
-    <a href="https://gitlab.com/Trokne/schedule-manager-backend">Backend</a> |
-    <a href="https://vk.com/trokne">VK</a> |
-    <a href="https://t.me/trokne">Telegram</a> |
+<div align="center"> 
+    <p>
+        <a href="https://gitlab.com/Trokne/schedule-manager-backend">Backend</a> |
+        <a href="https://vk.com/trokne">VK</a> |
+        <a href="https://t.me/trokne">Telegram</a>
     <br/><br/>
+</div>
 
 ScheduleManager является менеджером расписаний и потенциально позволяет создавать собственные группы, управлять расписанием, добавлять домашние задания и отслеживать контрольные работы.
 
