@@ -18,7 +18,9 @@ ScheduleManager является менеджером расписаний и **
 
 ### Убедитесь, что у Вас установлена последняя стабильная версия Node.JS (> 10)
 
-` node -v `
+```javascript
+node -v 
+```
 
 В случае ошибки выполнения команды: https://nodejs.org/en/download/
 
@@ -27,11 +29,15 @@ ScheduleManager является менеджером расписаний и **
 
 С помощью npm:
 
-```npm install```
+```javascript
+npm install
+```
 
 Или yarn (при наличии):
 
-```yarn```
+```javascript
+yarn
+```
 
 ### Выполните скрипт start
 
@@ -59,11 +65,15 @@ ScheduleManager является менеджером расписаний и **
 
 Для запуска проверки кода из корневой папки проекта необходимо запустить (для npm):
 
-```npm run lint```
+```javascript
+npm run lint
+```
 
 Для запуска проверки и попытки автоматического исправления:
 
-```npm run lint:write```
+```javascript
+npm run lint:write
+```
 
 Для удобства проверка линтером помещена в скрипт ```npm run start```.
 
@@ -84,7 +94,9 @@ ScheduleManager является менеджером расписаний и **
 
 Для расширения возможностей роутинга используется [connected-react-router](https://github.com/supasate/connected-react-router). Позволяет использовать такие методы, как
 
-```push(URL)```
+```javascript
+push(URL)
+```
 
 Чтобы перейти по заданному URL в методе.
 
