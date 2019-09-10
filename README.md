@@ -1,5 +1,5 @@
-<h1 align="center">ScheduleManager (frontend)</h1>
-<h3 align="center">Лучшее средство управления расписанием.</h3>
+<div align="center"><h1>ScheduleManager (frontend)</h1></div>
+<h3 align="center">Лучшее средство управления расписанием</h3>
   
   <p align="center">
     <a href="https://gitlab.com/Trokne/schedule-manager-backend">Backend</a> |
