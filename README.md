@@ -6,7 +6,6 @@
         <a href="https://gitlab.com/Trokne/schedule-manager-backend">Backend</a> |
         <a href="https://vk.com/trokne">VK</a> |
         <a href="https://t.me/trokne">Telegram</a>
-    <br/><br/>
 </div>
 
 ScheduleManager является менеджером расписаний и потенциально позволяет создавать собственные группы, управлять расписанием, добавлять домашние задания и отслеживать контрольные работы.
