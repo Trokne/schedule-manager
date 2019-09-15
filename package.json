@@ -4,8 +4,8 @@
   "description": "Выпускное задание для Xsolla Summer School 2019 - сервис для управления расписанием и домашними заданиями студентов.",
   "main": "index.js",
   "scripts": {
-    "start": "npm run lint:write && cross-env NODE_ENV=development webpack-dev-server --open --mode development --config ./config/webpack.dev.js",
-    "build": "cross-env NODE_ENV=production webpack --mode production --config ./config/webpack.prod.js",
+    "start": "npm run lint:write && cross-env NODE_ENV=development webpack-dev-server --open --mode development --config webpack.dev.js",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack.prod.js",
     "start:prod": "npm run lint && npm run build && http-server ./public -p 8081 -o --cors",
     "lint": "eslint ./src --max-warnings 10",
     "lint:write": "eslint ./src --fix --max-warnings 10",
