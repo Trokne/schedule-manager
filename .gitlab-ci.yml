@@ -1,6 +1,5 @@
 stages:
   - Dependencies
-  - Deploy
 
 cache:
   paths:
@@ -14,16 +13,5 @@ Dependencies:
     - rm -Rf node_modules/
     - rm -Rf public/
     - npm install
-    - npm run lint:write
+    - npm run lint
     - npm run build
-
-Deploy:
-  image: ruby:latest
-  stage: Deploy
-  before_script:
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-  script:
-    - cd public/
-    - dpl --provider=heroku --app=$HEROKU_APP_PRODUCTION --api-key=$HEROKU_API_KEY --skip_cleanup
