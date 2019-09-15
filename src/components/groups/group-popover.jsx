@@ -3,14 +3,10 @@ import { Icon, Menu, Dropdown } from 'antd';
 import PropTypes from 'prop-types';
 
 const Item = Menu.Item;
-const selectCurrentGroupAndOpen = (record, setCurrentGroup, openUpdateGroups) => {
-  setCurrentGroup(record);
-  openUpdateGroups();
-};
 
-const menu = (deleteGroup, openUpdateGroups, setCurrentGroup, record) => (
+const menu = (deleteGroup, openUpdateGroups, record) => (
   <Menu>
-    <Item onClick={() => selectCurrentGroupAndOpen(record, setCurrentGroup, openUpdateGroups)}>
+    <Item onClick={() => openUpdateGroups()}>
       <Icon type="edit" />
       Редактировать
     </Item>
@@ -23,6 +19,8 @@ const menu = (deleteGroup, openUpdateGroups, setCurrentGroup, record) => (
 
 const GroupPopover = props => {
   const { value, record, deleteGroup, setCurrentGroup, openUpdateGroups } = props;
+  setCurrentGroup(record);
+
   return (
     <Dropdown
       overlay={menu(deleteGroup, openUpdateGroups, setCurrentGroup, record)}

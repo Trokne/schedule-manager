@@ -11,11 +11,13 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  closeAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(false, true)),
+  closeAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(false)),
   universityFilterOptions: (input, option) => {
     dispatch(addingActions.universityFilterOptions(input, option));
   },
-  submitGroup: (form, isAddState) => dispatch(addingActions.submitGroup(form, isAddState))
+  submitGroup: (form, isAddState, group) => {
+    dispatch(addingActions.submitGroup(form, isAddState, group));
+  }
 });
 
 export default connect(
