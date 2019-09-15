@@ -7,7 +7,6 @@ import * as universitiesApi from '../../constants/network/universities';
 import * as notifications from '../decoration/notification';
 import getErrorMessage from '../network/errors';
 import changeLoaderState from '../decoration/loader';
-import { setCurrentGroup } from './group-popover';
 
 const addUniversityOptions = universityOptions => ({
   type: types.ADD_UNIVERSITY_OPTIONS,
@@ -33,9 +32,8 @@ const setVisibilityEditAddGroup = (isVisible, isAddState) => ({
   payload: { isOpenedAddingGroups: isVisible, isAddState }
 });
 
-export const changeAddingGroupsVisibility = (isVisible, isAddState) => async dispatch => {
-  if (isAddState) dispatch(setCurrentGroup(null));
-  dispatch(setVisibilityEditAddGroup(isVisible, isAddState));
+export const changeAddingGroupsVisibility = isVisible => async dispatch => {
+  dispatch(setVisibilityEditAddGroup(isVisible));
 };
 
 export const universityFilterOptions = (input, option) => {
@@ -66,7 +64,7 @@ const updateGroupInList = group => ({
 
 const addGroup = (name, description, universityName, universityId) => async dispatch => {
   http
-    .post(groupsApi.general, { Name: name, UniversityId: universityId, Description: description })
+    .post(groupsApi.create, { Name: name, UniversityId: universityId, Description: description })
     .then(response => {
       dispatch(
         addGroupInList({
@@ -77,7 +75,7 @@ const addGroup = (name, description, universityName, universityId) => async disp
           UniversityName: universityName
         })
       );
-      dispatch(changeAddingGroupsVisibility(false, true));
+      dispatch(changeAddingGroupsVisibility(false));
       notifications.openSuccessNotifaction('Группа успешно добавлена', '');
       dispatch(changeLoaderState(false));
     })
@@ -87,9 +85,20 @@ const addGroup = (name, description, universityName, universityId) => async disp
     });
 };
 
-const updateGroup = (name, description, universityName, universityId) => async dispatch => {
+const updateGroup = (
+  name,
+  description,
+  universityName,
+  universityId,
+  groupId
+) => async dispatch => {
   http
-    .post(groupsApi.general, { Name: name, UniversityId: universityId, Description: description })
+    .post(groupsApi.update, {
+      Name: name,
+      UniversityId: universityId,
+      Description: description,
+      Id: groupId
+    })
     .then(response => {
       dispatch(
         updateGroupInList({
@@ -101,7 +110,7 @@ const updateGroup = (name, description, universityName, universityId) => async d
         })
       );
       notifications.openSuccessNotifaction('Группа успешно изменена', '');
-      dispatch(changeAddingGroupsVisibility(false, false));
+      dispatch(changeAddingGroupsVisibility(false));
       dispatch(changeLoaderState(false));
     })
     .catch(error => {
@@ -110,7 +119,7 @@ const updateGroup = (name, description, universityName, universityId) => async d
     });
 };
 
-export const submitGroup = (form, isAddState) => async dispatch => {
+export const submitGroup = (form, isAddState, selectedGroup) => async dispatch => {
   dispatch(changeLoaderState(true));
   form.validateFields((err, values) => {
     if (!err) {
@@ -121,7 +130,13 @@ export const submitGroup = (form, isAddState) => async dispatch => {
           );
         } else {
           dispatch(
-            updateGroup(values.name, values.description, response.data.name, values.university)
+            updateGroup(
+              values.name,
+              values.description,
+              response.data.name,
+              values.university,
+              selectedGroup.Id
+            )
           );
         }
       });

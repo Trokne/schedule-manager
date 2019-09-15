@@ -48,7 +48,7 @@ export default function groups(state = initialState, action) {
         ...state,
         groupValues: state.groupValues
           .filter(g => g.Id !== action.payload.Id)
-          .concat(action.payload.Id)
+          .concat(action.payload)
       };
     default:
       return state;
