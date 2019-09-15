@@ -1,8 +1,10 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const path = require('path');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = {
+module.exports = merge(common, {
   entry: ['./src/index.js'],
   resolve: {
     extensions: ['.jsx', '.js', 'css']
@@ -30,4 +32,4 @@ module.exports = {
       chunkFilename: '[id].[hash:8].css'
     })
   ]
-};
+});
