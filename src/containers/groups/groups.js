@@ -14,7 +14,8 @@ const mapDispatchToProps = dispatch => ({
   openAddingGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(true)),
   deleteCurrentGroup: () => dispatch(setCurrentGroup(null)),
   fetchUniversities: () => dispatch(addingActions.fetchUniversities()),
-  fetchGroups: () => dispatch(fetchGroups())
+  fetchGroups: () => dispatch(fetchGroups()),
+  setAddState: isAdd => dispatch(addingActions.setAddState(isAdd))
 });
 
 export default connect(

@@ -4,9 +4,14 @@ import PropTypes from 'prop-types';
 
 const Item = Menu.Item;
 
-const menu = (deleteGroup, openUpdateGroups, record) => (
+const menu = (deleteGroup, openUpdateGroups, setCurrentGroup, record) => (
   <Menu>
-    <Item onClick={() => openUpdateGroups()}>
+    <Item
+      onClick={() => {
+        openUpdateGroups();
+        setCurrentGroup(record);
+      }}
+    >
       <Icon type="edit" />
       Редактировать
     </Item>
@@ -18,8 +23,8 @@ const menu = (deleteGroup, openUpdateGroups, record) => (
 );
 
 const GroupPopover = props => {
-  const { value, record, deleteGroup, setCurrentGroup, openUpdateGroups } = props;
-  setCurrentGroup(record);
+  const { value, record, deleteGroup, setCurrentGroup, openUpdateGroups, setAddState } = props;
+  setAddState(false);
 
   return (
     <Dropdown
@@ -36,7 +41,8 @@ GroupPopover.propTypes = {
   record: PropTypes.any.isRequired,
   deleteGroup: PropTypes.func.isRequired,
   setCurrentGroup: PropTypes.func.isRequired,
-  openUpdateGroups: PropTypes.func.isRequired
+  openUpdateGroups: PropTypes.func.isRequired,
+  setAddState: PropTypes.func.isRequired
 };
 
 export default GroupPopover;

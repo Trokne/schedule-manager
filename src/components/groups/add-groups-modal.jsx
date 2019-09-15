@@ -19,7 +19,7 @@ class AddGroupsModal extends React.Component {
       currentGroup
     } = this.props;
 
-    const { getFieldDecorator } = form;
+    const { getFieldDecorator, resetFields } = form;
     const title = isAddState ? 'Добавление группы' : 'Редактирование группы';
     const okButtonText = isAddState ? 'Добавить' : 'Изменить';
     let defaultName;
@@ -39,7 +39,10 @@ class AddGroupsModal extends React.Component {
         <Modal
           visible={isOpenedAddingGroups}
           title={title}
-          onCancel={() => closeAddingGroups()}
+          onCancel={() => {
+            closeAddingGroups();
+            resetFields();
+          }}
           footer={[
             <Button key="back" onClick={closeAddingGroups}>
               Отмена

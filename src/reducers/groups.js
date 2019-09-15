@@ -15,8 +15,12 @@ export default function groups(state = initialState, action) {
     case addTypes.CHANGE_ADDING_GROUPS_VISIBILITY:
       return {
         ...state,
-        isOpenedAddingGroups: action.payload.isOpenedAddingGroups,
-        isAddState: action.payload.isAddState
+        isOpenedAddingGroups: action.payload
+      };
+    case addTypes.SET_ADD_STATE:
+      return {
+        ...state,
+        isAddState: action.payload
       };
     case addTypes.ADD_FETCHED_UNIVERSITIES:
       return {

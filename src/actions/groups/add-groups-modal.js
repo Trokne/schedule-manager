@@ -7,6 +7,7 @@ import * as universitiesApi from '../../constants/network/universities';
 import * as notifications from '../decoration/notification';
 import getErrorMessage from '../network/errors';
 import changeLoaderState from '../decoration/loader';
+import { setCurrentGroup } from './group-popover';
 
 const addUniversityOptions = universityOptions => ({
   type: types.ADD_UNIVERSITY_OPTIONS,
@@ -27,9 +28,14 @@ const mapUniversityOptions = universityValues => async dispatch => {
   dispatch(addUniversityOptions(universityOptions));
 };
 
-const setVisibilityEditAddGroup = (isVisible, isAddState) => ({
+const setVisibilityEditAddGroup = isVisible => ({
   type: types.CHANGE_ADDING_GROUPS_VISIBILITY,
-  payload: { isOpenedAddingGroups: isVisible, isAddState }
+  payload: isVisible
+});
+
+export const setAddState = isAddState => ({
+  type: types.SET_ADD_STATE,
+  payload: isAddState
 });
 
 export const changeAddingGroupsVisibility = isVisible => async dispatch => {
@@ -62,7 +68,7 @@ const updateGroupInList = group => ({
   payload: group
 });
 
-const addGroup = (name, description, universityName, universityId) => async dispatch => {
+const addGroup = (form, name, description, universityName, universityId) => async dispatch => {
   http
     .post(groupsApi.create, { Name: name, UniversityId: universityId, Description: description })
     .then(response => {
@@ -78,6 +84,7 @@ const addGroup = (name, description, universityName, universityId) => async disp
       dispatch(changeAddingGroupsVisibility(false));
       notifications.openSuccessNotifaction('Группа успешно добавлена', '');
       dispatch(changeLoaderState(false));
+      form.resetFields();
     })
     .catch(error => {
       notifications.openErrorNotification('Ошибка добавления группы!', getErrorMessage(error));
@@ -86,6 +93,7 @@ const addGroup = (name, description, universityName, universityId) => async disp
 };
 
 const updateGroup = (
+  form,
   name,
   description,
   universityName,
@@ -112,6 +120,8 @@ const updateGroup = (
       notifications.openSuccessNotifaction('Группа успешно изменена', '');
       dispatch(changeAddingGroupsVisibility(false));
       dispatch(changeLoaderState(false));
+      dispatch(setCurrentGroup(null));
+      form.resetFields();
     })
     .catch(error => {
       notifications.openErrorNotification('Ошибка изменения группы!', getErrorMessage(error));
@@ -126,11 +136,12 @@ export const submitGroup = (form, isAddState, selectedGroup) => async dispatch =
       http.get(universitiesApi.getById(values.university)).then(response => {
         if (isAddState) {
           dispatch(
-            addGroup(values.name, values.description, response.data.name, values.university)
+            addGroup(form, values.name, values.description, response.data.name, values.university)
           );
         } else {
           dispatch(
             updateGroup(
+              form,
               values.name,
               values.description,
               response.data.name,

@@ -6,7 +6,8 @@ import * as addingActions from '../../actions/groups/add-groups-modal';
 const mapDispatchToProps = dispatch => ({
   deleteGroup: group => dispatch(editActions.deleteGroup(group)),
   setCurrentGroup: group => dispatch(editActions.setCurrentGroup(group)),
-  openUpdateGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(true))
+  openUpdateGroups: () => dispatch(addingActions.changeAddingGroupsVisibility(true)),
+  setAddState: isAddState => dispatch(addingActions.setAddState(isAddState))
 });
 
 export default connect(

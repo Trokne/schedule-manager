@@ -9,7 +9,8 @@ const { Column } = Table;
 
 class Groups extends React.Component {
   componentDidMount() {
-    const { universities, fetchUniversities, groups, fetchGroups, deleteCurrentGroup } = this.props;
+    const { universities, fetchUniversities, groups, fetchGroups } = this.props;
+
     if (universities.length === 0 || universities === undefined) {
       fetchUniversities();
     }
@@ -17,15 +18,21 @@ class Groups extends React.Component {
     if (groups.length === 0 || groups === undefined) {
       fetchGroups();
     }
-    deleteCurrentGroup();
   }
 
   render() {
-    const { openAddingGroups, groups } = this.props;
+    const { openAddingGroups, groups, setAddState, deleteCurrentGroup } = this.props;
     return (
       <div className="body">
         <div className="box add-item">
-          <Button icon="plus" onClick={openAddingGroups}>
+          <Button
+            icon="plus"
+            onClick={() => {
+              openAddingGroups();
+              setAddState(true);
+              deleteCurrentGroup();
+            }}
+          >
             Добавить группу
           </Button>
           <AddGroupsModal />
@@ -62,6 +69,7 @@ class Groups extends React.Component {
 Groups.propTypes = {
   openAddingGroups: PropTypes.func.isRequired,
   deleteCurrentGroup: PropTypes.func.isRequired,
+  setAddState: PropTypes.func.isRequired,
   isOpenedAddingGroups: PropTypes.bool.isRequired,
   universities: PropTypes.array,
   groups: PropTypes.array,
